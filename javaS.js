@@ -86,7 +86,7 @@ function addStudentToTable(index,student){
     cell = document.createElement('td')
     //cell.innerHTML = student.username
     let img =  document.createElement('img')
-    img.setAttribute('src',student.imageLink)
+    img.setAttribute('src',student.image)
     cell.appendChild(img)
     row.appendChild(cell)
     cell = document.createElement('td')
@@ -94,6 +94,7 @@ function addStudentToTable(index,student){
     row.appendChild(cell)
     tableBody.appendChild(row)
 }
+
 function addStudentData(student){
     let idElem = document.getElementById('id')
     idElem.innerHTML = student.id
@@ -109,14 +110,23 @@ function addStudentData(student){
 }
 
 function onLoad(){
-    fetch('https://dv-student-backend-2019.appspot.com/student')
+    fetch('https://dv-student-backend-2019.appspot.com/students')
     .then((response) => {
         return response.json()
     }).then(data =>{
-        addStudentData(data)
+        addStudentList(data)
     })
 
 }
+
+function addStudentList(studentList){
+    let counter = 1
+    for(student of studentList ){
+        addStudentToTable(counter++,student)
+
+    }
+}
+
 
 /*function onLoad(){ // ver ดึงข้อมูลมาจากไพล์ที่เราเก็บไม่ไว้ ไม่ใช่จาก API
     fetch('asset/students2.json').then(response => {
@@ -134,7 +144,7 @@ function onLoad(){
 
 /*window.addEventListener("load",function(){
          
-      addStudentList(students)/*
+      addStudentList(students)
 
 })/*
 
