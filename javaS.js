@@ -1,5 +1,5 @@
 
-var student = {};
+/*var student = {};
 student.name = 'คุณลุง'
 student.username = 'a@b.com'
 student.gender = 'ชาย'
@@ -18,12 +18,13 @@ var students = [
         username : 'm@n.com',
         gender : 'ชาย'
     }
-]
+]*/
+
 //document.getElementById('output').innerText = student;
 
 
 
-function addStudentData(student){
+/*function addStudentData(student){
     const output = document.getElementById('output')
     let row = document.createElement('div')
     row.classList.add("row")
@@ -68,7 +69,8 @@ function addStudentData(student){
     row.appendChild(columnName)
     row.appendChild(columnValue)
     output.appendChild(row)
-}
+}*/
+
 
 
 function addStudentToTable(index,student){
@@ -79,7 +81,7 @@ function addStudentToTable(index,student){
     cell.innerHTML = index
     row.appendChild(cell)
     cell = document.createElement('td')
-    cell.innerHTML = student.name
+    cell.innerHTML = `${student.name} ${student.surname}`
     row.appendChild(cell)
     cell = document.createElement('td')
     //cell.innerHTML = student.username
@@ -92,8 +94,31 @@ function addStudentToTable(index,student){
     row.appendChild(cell)
     tableBody.appendChild(row)
 }
+function addStudentData(student){
+    let idElem = document.getElementById('id')
+    idElem.innerHTML = student.id
+    let studentIdElem = document.getElementById('studentId')
+    studentIdElem.innerHTML = student.studentId
+    let nameElem = document.getElementById('name')
+    nameElem.innerHTML =`${student.name} ${student.surname}`
+    let gpaElem = document.getElementById('gpa')
+    gpaElem.innerHTML = student.gpa
+    let profileElem = document.getElementById('image')
+    profileElem.setAttribute('src',student.image)
+
+}
 
 function onLoad(){
+    fetch('https://dv-student-backend-2019.appspot.com/student')
+    .then((response) => {
+        return response.json()
+    }).then(data =>{
+        addStudentData(data)
+    })
+
+}
+
+/*function onLoad(){ // ver ดึงข้อมูลมาจากไพล์ที่เราเก็บไม่ไว้ ไม่ใช่จาก API
     fetch('asset/students2.json').then(response => {
         return response.json()
     }).then(data => {
@@ -104,14 +129,14 @@ function onLoad(){
     })
    
 
-}
+}*/
 
 
 /*window.addEventListener("load",function(){
          
-      addStudentList(students)
+      addStudentList(students)/*
 
-})*/
+})/*
 
 function addStudentList(studentList){
     let counter = 1
@@ -130,52 +155,50 @@ function addStudentList(studentList){
 
 
 
-// var searchButton = document.getElementById('searchButton')
-// var inputText = document.getElementById('inputText')
-// var output = document.getElementById('output')
-// var badgeCount = document.getElementById('count')
-// function addText(){
-//     let text = inputText.value
-//     console.log(text)
-//     let newButton = document.createElement('button')
-//     newButton.classList.add('btn')
-//     newButton.classList.add('btn-outline-primary')
-//     newButton.classList.add('m-2')
-//     newButton.setAttribute('type','button')
-//     newButton.innerText = text
-//     output.appendChild(newButton)
-//     badgeCount.innerText = output.children.length
-// }
+/*var searchButton = document.getElementById('searchButton')
+ var inputText = document.getElementById('inputText')
+ var output = document.getElementById('output')
+ var badgeCount = document.getElementById('count')
+ function addText(){
+     let text = inputText.value
+    console.log(text)
+    let newButton = document.createElement('button')
+    newButton.classList.add('btn')
+    newButton.classList.add('btn-outline-primary')
+    newButton.classList.add('m-2')
+    newButton.setAttribute('type','button')
+     output.appendChild(newButton)
+    badgeCount.innerText = output.children.length
+}*/
 
-// searchButton.addEventListener('click',addText)
-// inputText.addEventListener('blur',addText)
+/* searchButton.addEventListener('click',addText)
+inputText.addEventListener('blur',addText)
 
-// var inputName = document.getElementById('name')
-// var inputUsername = document.getElementById('username')
-// var inputNamePrefix = document.getElementById('namePrefix')
-// var outputTableBody = document.getElementById('outputTableBody')
-// var submitData = document.getElementById('submitData')
+var inputName = document.getElementById('name')
+ var inputUsername = document.getElementById('username')
+ var inputNamePrefix = document.getElementById('namePrefix')
+var outputTableBody = document.getElementById('outputTableBody')
+ var submitData = document.getElementById('submitData')
 
-// function addDataToTable(index){
-//     let row = document.createElement('tr')
-//     let cell = document.createElement('th')
-//     cell.setAttribute('score',row)
-//     cell.innerHTML = index
-//     row.appendChild(cell)
-//     cell = document.createElement('td')
-//     cell.innerHTML = inputName.value
-//     row.appendChild(cell)
-//     cell = document.createElement('td')
-//     cell.innerHTML = inputUsername.value
-//     row.appendChild(cell)
-//     cell = document.createElement('td')
-//     cell.innerHTML = inputNamePrefix.options[inputNamePrefix.selectedIndex].text
-//     row.appendChild(cell)
-//     outputTableBody.appendChild(row)
-// }
-// var index = 1
-// submitData.addEventListener('click',(event)=>{
+function addDataToTable(index){
+     let row = document.createElement('tr')
+    let cell = document.createElement('th')
+     cell.setAttribute('score',row)
+   cell.innerHTML = index
+    row.appendChild(cell)
+    cell = document.createElement('td')
+    cell.innerHTML = inputName.value
+    row.appendChild(cell)
+    cell = document.createElement('td')
+    cell.innerHTML = inputUsername.value
+    row.appendChild(cell)
+    cell = document.createElement('td')
+     cell.innerHTML = inputNamePrefix.options[inputNamePrefix.selectedIndex].text
+    outputTableBody.appendChild(row)
+ }
+ var index = 1
+submitData.addEventListener('click',(event)=>{
         
-//     addDataToTable(index++)
+     addDataToTable(index++)
     
-// })
+ })*/
