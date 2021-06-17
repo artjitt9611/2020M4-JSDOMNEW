@@ -87,6 +87,8 @@ function addStudentToTable(index,student){
     //cell.innerHTML = student.username
     let img =  document.createElement('img')
     img.setAttribute('src',student.image)
+    img.height = 200
+    img.classList.add('img-thumbnail')
     cell.appendChild(img)
     row.appendChild(cell)
     cell = document.createElement('td')
@@ -109,7 +111,20 @@ function addStudentData(student){
 
 }
 
-function onLoad(){
+document.getElementById('searchButton').addEventListener('click',()=>{
+    let id = document.getElementById('inputText').value
+    console.log(id)
+        fetch(`https://dv-student-backend-2019.appspot.com/student/${id}`)
+        .then(response => {
+            return response.json()
+        }).then(student =>{
+            addStudentData(student)
+        })
+    
+    })
+
+
+/*function onLoad(){
     fetch('https://dv-student-backend-2019.appspot.com/students')
     .then((response) => {
         return response.json()
@@ -117,7 +132,7 @@ function onLoad(){
         addStudentList(data)
     })
 
-}
+}*/
 
 function addStudentList(studentList){
     let counter = 1
