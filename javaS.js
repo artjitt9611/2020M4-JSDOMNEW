@@ -143,8 +143,27 @@ function onLoad(){
        image:"asset/images/Inosuke.png"
    }
    addStudentToDB(student)
+   Deletestudent(4)
 
 }
+
+/*function Deletestudent(id){
+    fetch(`https://dv-student-backend-2019.appspot.com/students/${id}`,{
+        method: 'DELETE'
+    }).then((response) => {
+        if(response.status === 200){
+            return response.json()
+        }else{
+            throw Error(response.statusText)
+        }
+    }).then(data => {
+        alert(`student name ${data.name} is delete now`)
+    
+    }).catch( error => {
+        alert('erorr ไอ้ควาย')
+
+    })
+}*/
 
 
 function addStudentToDB(student)
