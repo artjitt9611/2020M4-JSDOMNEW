@@ -134,6 +134,39 @@ document.getElementById('searchButton').addEventListener('click',()=>{
 
 }*/
 
+function onLoad(){
+   student = {
+       name:"John",
+       surname:"Doe",
+       studentId:"632110336",
+       gpa:"4.00",
+       image:"asset/images/Inosuke.png"
+   }
+   addStudentToDB(student)
+
+}
+
+
+function addStudentToDB(student)
+{
+    fetch('https://dv-student-backend-2019.appspot.com/students',{
+        method: 'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(student)
+    }).then((response) => {
+        if(response.status === 200){
+            return response.json()
+        }else{
+            throw Error(response.statusText)
+        }
+    }).then(data => {
+        console.log('success',data)
+    
+    })
+}
+
 function addStudentList(studentList){
     let counter = 1
     for(student of studentList ){
