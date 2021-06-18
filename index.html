@@ -13,7 +13,7 @@
     <title>Hello, world!</title>
 </head>
 
-<body onload="onLoad()">
+<body  onload="OnLoad()" ></body>
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
@@ -23,10 +23,10 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
+                <li><a href="#" class="nav-link px-2 link-secondary" id="1">ชื่อนักศึกษาทั้งหมด</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark" id="2">ค้นหา</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark" id="3">เพิ่มนักศึกษา</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark" id="4">Products</a></li>
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -53,45 +53,33 @@
             </div>
         </div>
     </div>
-    <div class="d-flex justify-content-center my-3">
-        <form class="row gy-2 gx-3 align-items-center">
-            <div class="col-auto">
-                <label class="visually-hidden" for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Jane Doe">
-            </div>
-            <div class="col-auto">
-                <label class="visually-hidden" for="username">Username</label>
-                <div class="input-group">
-                    <div class="input-group-text">@</div>
-                    <input type="text" class="form-control" id="username" placeholder="Username">
-                </div>
-            </div>
-            <div class="col-auto">
-                <label class="visually-hidden" for="autoSizingSelect">Preference</label>
-                <select class="form-select" id="namePrefix">
-                    <option selected>Choose...</option>
-                    <option value="1">นาย</option>
-                    <option value="2">นาง</option>
-                    <option value="3">นางสาว</option>
-                </select>
-            </div>
-            <div class="col-auto">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="autoSizingCheck">
-                    <label class="form-check-label" for="autoSizingCheck">
-                        Remember me
-                    </label>
-                </div>
-            </div>
-            <div class="col-auto">
-                <button type="button" class="btn btn-primary" id="submitData">Submit</button>
-            </div>
-        </form>
+   
+<form class="row gy-2 gx-3 align-items-center" id="UserDetail">
+    <div class="form-floating">
+        <input type="text" class="form-control" name="" id="nameInput"  placehold= "ชื่อ">
+        <label for="nameInput">Name</label>
     </div>
-    <div class="d-flex flex-row justify-content-center">
-
+    <div class="form-floating">
+        <input type="text" class="form-control" name="" id="surnameInput"  placehold= "นามสกุล">
+        <label for="surameInput">surName</label>
     </div>
-
+    <div class="form-floating">
+        <input type="text" class="form-control" name="" id="studentIdInput"  placehold= "รหัสนักศึกษา">
+        <label for="studentIdInput">รหัสนักศึกษา</label>
+    </div>
+    <div class="form-floating">
+        <input type="text" class="form-control" name="" id="gpaInput"  placehold= "gpa">
+        <label for="gpaInput">GPA</label>
+    </div>
+    <div class="form-floating">
+        <input type="text" class="form-control" name="" id="imageLinkInput"  placehold= "image link">
+        <label for="imgInput">link รูป</label>
+    </div>
+    <div class="col auto">
+        <button type="button" class="btn btn-primary" id="addButton">Submit</button>
+    </div>
+   
+</form>
 
     <div id="output" class="px-5">
         <table class="table table-hover">
@@ -112,6 +100,7 @@
         </table>
         
     </div>
+
     <div id = "single_student_result" class="px-3 m-5">
         <div class="row">
             <div class=" col-3"><b>Id:</b></div>

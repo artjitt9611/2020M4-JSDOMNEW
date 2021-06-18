@@ -42,6 +42,15 @@ function addStudentToTable(index,student){
     cell = document.createElement('td')
     cell.innerHTML = student.gender
     row.appendChild(cell)
+    
+    cell = document.createElement('td')
+    let button = document.createElement('button')
+    button.classList.add('btn')
+    button.classList.add('btn-danger')
+    button.setAttribute('type','button')
+    button.innerText = "ลบ"
+    cell.appendChild(button)
+    row.appendChild(cell)
     tableBody.appendChild(row)
 }
 
