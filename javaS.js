@@ -3,13 +3,13 @@
 function addStudentList(studentList){
     let counter = 1
     document.getElementById('tableBody').innerHTML =''
-    for(student of studentList ){
-        addStudentToTable(counter++,student)
+    for(studentA of studentList ){
+        addStudentToTable(counter++,studentA)
 
     }
 }
 
-function addStudentToTable(index,student){
+function addStudentToTable(index,studentA){
     const tableBody = document.getElementById('tableBody')
     let row = document.createElement('tr')
     let cell = document.createElement('th')
@@ -17,18 +17,18 @@ function addStudentToTable(index,student){
     cell.innerHTML = index
     row.appendChild(cell)
     cell = document.createElement('td')
-    cell.innerHTML = `${student.name} ${student.surname}`
+    cell.innerHTML = `${studentA.name} ${studentA.surname}`
     row.appendChild(cell)
     cell = document.createElement('td')
     //cell.innerHTML = student.username
     let img =  document.createElement('img')
-    img.setAttribute('src',student.image)
+    img.setAttribute('src',studentA.image)
     img.height = 200
     img.classList.add('img-thumbnail')
     cell.appendChild(img)
     row.appendChild(cell)
     cell = document.createElement('td')
-    cell.innerHTML = student.gender
+    cell.innerHTML = studentA.gender
     row.appendChild(cell)
 
 
@@ -86,9 +86,11 @@ document.getElementById('searchButton').addEventListener('click',()=>{
     
 
     function showAllStudent(){
-        fetch('https://dv-student-backend-2019.appspot.com/students').then((response) => {
+        fetch('https://dv-student-backend-2019.appspot.com/students')
+        .then((response) => {
             return response.json()
         }).then(data => {
+            console.log(data)
             addStudentList(data)
         })
     }
@@ -122,10 +124,12 @@ function addStudentToDB(student)
     }).then((response) => {
         if(response.status === 200){
             return response.json()
+        
         }else{
             throw Error(response.statusText)
         }
     }).then(data => {
+        console.log(data)
         showAllStudent()
     })
 }
@@ -163,9 +167,7 @@ function HideAll(){
 
 
 function OnLoad(){
-
     HideAll()
-
 }
 
 document.getElementById('1').addEventListener('click', ()=>{
